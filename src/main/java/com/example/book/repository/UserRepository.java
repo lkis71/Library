@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 
 import org.springframework.stereotype.Repository;
 
+import com.example.book.controller.dto.UserDto;
 import com.example.book.entity.User;
 
 import lombok.RequiredArgsConstructor;
@@ -16,13 +17,30 @@ public class UserRepository {
     
     private final EntityManager em;
 
-    public void save(User user) {
-        em.persist(user);
-    }
-    
-    public List<User> findByRegistNumber(Integer registNumber) {
-        return em.createQuery("select u from User u where registNumber = :registNumber", User.class)
-            .setParameter("registNumber", registNumber)
+    public List<User> findAll() {
+        return em.createQuery("select u from User u", User.class)
             .getResultList();
     }
+
+    public void save(User user) {
+        if(user.getId() == null){
+            em.persist(user);
+        }else{
+            em.merge(user);
+        }
+    }
+    
+    public List<User> findByRegistNum(Integer registNum) {
+        return em.createQuery("select u from User u where registNum = :registNum", User.class)
+            .setParameter("registNum", registNum)
+            .getResultList();
+    }
+
+    public User findOne(Long userId){
+        return em.createQuery(
+            "select u from User u where id = :userId", User.class)
+            .setParameter("userId", userId)
+            .getSingleResult();
+    }
+
 }

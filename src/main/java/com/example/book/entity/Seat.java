@@ -23,7 +23,7 @@ public class Seat {
     @Column(name = "seat_id")
     private Long id;
 
-    private String seatName; //자리번호
+    private String seatCd; //자리번호
 
     private String status; //예약상태
 

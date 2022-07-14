@@ -1,5 +1,7 @@
 package com.example.book.entity;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,11 +20,16 @@ public class User {
     @Column(name = "user_id")
     private Long id;
 
-    private String name; //사용자 이름
+    private String userNm; //사용자 이름
 
-    private Integer phoneNumber; //사용자 번호
+    private String phoneNum; //사용자 번호
 
     private String address; //사용자 주소
 
-    private Integer registNumber; //주민등록번호
+    private Integer registNum; //주민등록번호
+
+    private LocalDateTime joinDate; //가입일자
+    
+    private String useAt; //회원탈퇴 여부
+
 }
