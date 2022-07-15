@@ -45,12 +45,7 @@ public class UserController {
     public Long createUser(@RequestBody UserRequest userRequest) {
         
         User user = new User();
-        user.setUserNm(userRequest.getUserNm());
-        user.setPhoneNum(userRequest.getPhoneNum());
-        user.setAddress(userRequest.getAddress());
-        user.setRegistNum(userRequest.getRegistNum());
-        user.setJoinDate(LocalDateTime.now());
-        user.setUseAt("Y");
+        user.createUser(userRequest.getUserNm(), userRequest.getPhoneNum(), userRequest.getAddress(), userRequest.getRegistNum());
 
         return userService.join(user);
     }
@@ -60,10 +55,7 @@ public class UserController {
 
         User user = new User();
         // user.setId(userRequest.getId());
-        user.setUserNm(userRequest.getUserNm());
-        user.setPhoneNum(userRequest.getPhoneNum());
-        user.setAddress(userRequest.getAddress());
-        user.setRegistNum(userRequest.getRegistNum());
+        user.createUser(userRequest.getUserNm(), userRequest.getPhoneNum(), userRequest.getAddress(), userRequest.getRegistNum());
 
         userService.update(user);
     }

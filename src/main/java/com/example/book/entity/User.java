@@ -32,4 +32,18 @@ public class User {
     
     private String useAt; //회원탈퇴 여부
 
+    /** 생성메서드 */
+    public User createUser(String userNm, String phoneNum, String address, Integer registNum) {
+        
+        User user = new User();
+        user.setUserNm(userNm);
+        user.setPhoneNum(phoneNum);
+        user.setAddress(address);
+        user.setRegistNum(registNum);
+        user.setJoinDate(LocalDateTime.now());
+        user.setUseAt("Y");
+
+        return user;
+    }
+
 }

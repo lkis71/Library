@@ -1,5 +1,6 @@
 package com.example.book.entity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
@@ -15,7 +16,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Getter
+@Getter @Setter
 public class Rental {
     
     @Id @GeneratedValue
@@ -32,6 +33,17 @@ public class Rental {
     
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "book_id")
-    @Setter
     private Book book;
+
+    /** 생성메서드 */
+    public Rental createRental(User user, Book book) {
+        
+        Rental rental = new Rental();
+        rental.setRentalStartDate(LocalDateTime.now());
+        rental.setRentalEndDate(LocalDateTime.now().plusHours(6));
+        rental.setUser(user);
+        rental.setBook(book);
+
+        return rental;
+    }
 }

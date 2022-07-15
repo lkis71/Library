@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.book.controller.dto.UserDto;
 import com.example.book.entity.User;
 import com.example.book.repository.UserRepository;
 
