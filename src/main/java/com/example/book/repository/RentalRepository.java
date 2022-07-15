@@ -21,7 +21,10 @@ public class RentalRepository {
     }
 
     public List<Rental> findAll() {
-        return em.createQuery("select r from Rental r", Rental.class)
+        return em.createQuery(
+            "select r from Rental r" +
+            " join fetch r.user u" +
+            " join fetch r.book b", Rental.class)
             .getResultList();
     }
     

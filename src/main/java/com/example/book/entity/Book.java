@@ -41,7 +41,7 @@ public class Book {
     }
 
     /** 생성메서드 */
-    public Book createBook(String title, int stock, String author, String location) {
+    public static Book createBook(String title, int stock, String author, String location) {
         
         Book book = new Book();
         book.setTitle(title);

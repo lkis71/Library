@@ -10,7 +10,7 @@ public class UserDto {
     private String userNm;
     private String phoneNum;
     private String address;
-    private Integer registNum;
+    private String registNum;
 
     public UserDto(User user) {
         this.userNm = user.getUserNm();

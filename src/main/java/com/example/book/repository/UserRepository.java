@@ -1,12 +1,12 @@
 package com.example.book.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 
 import org.springframework.stereotype.Repository;
 
-import com.example.book.controller.dto.UserDto;
 import com.example.book.entity.User;
 
 import lombok.RequiredArgsConstructor;
@@ -30,17 +30,19 @@ public class UserRepository {
         }
     }
     
-    public List<User> findByRegistNum(Integer registNum) {
+    public List<User> findByRegistNum(String registNum) {
         return em.createQuery("select u from User u where registNum = :registNum", User.class)
             .setParameter("registNum", registNum)
             .getResultList();
     }
 
-    public User findOne(Long userId){
+    public Optional<User> findOne(Long userId){
         return em.createQuery(
             "select u from User u where id = :userId", User.class)
             .setParameter("userId", userId)
-            .getSingleResult();
+            .getResultList()
+            .stream()
+            .findAny();
     }
 
 }

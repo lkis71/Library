@@ -1,5 +1,7 @@
 package com.example.book.repository;
 
+import java.util.Optional;
+
 import javax.persistence.EntityManager;
 
 import org.springframework.stereotype.Repository;
@@ -18,10 +20,12 @@ public class BookRepository {
         em.persist(book);
     }
 
-    public Book findOne(Long bookId) {
+    public Optional<Book> findOne(Long bookId) {
         return em.createQuery("select b from Book b where id = :bookId", Book.class)
             .setParameter("bookId", bookId)
-            .getSingleResult();
+            .getResultList()
+            .stream()
+            .findAny();
     }
 
     

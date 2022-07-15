@@ -44,8 +44,7 @@ public class UserController {
     @PostMapping("/users")
     public Long createUser(@RequestBody UserRequest userRequest) {
         
-        User user = new User();
-        user.createUser(userRequest.getUserNm(), userRequest.getPhoneNum(), userRequest.getAddress(), userRequest.getRegistNum());
+        User user = User.createUser(userRequest.getUserNm(), userRequest.getPhoneNum(), userRequest.getAddress(), userRequest.getRegistNum());
 
         return userService.join(user);
     }
@@ -53,9 +52,8 @@ public class UserController {
     @PostMapping("/users/{userId}/edit")
     public void updateUser(@PathVariable("userId") Long userId, @RequestBody UserRequest userRequest) {
 
-        User user = new User();
         // user.setId(userRequest.getId());
-        user.createUser(userRequest.getUserNm(), userRequest.getPhoneNum(), userRequest.getAddress(), userRequest.getRegistNum());
+        User user = User.createUser(userRequest.getUserNm(), userRequest.getPhoneNum(), userRequest.getAddress(), userRequest.getRegistNum());
 
         userService.update(user);
     }

@@ -1,6 +1,7 @@
 package com.example.book.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,13 +28,13 @@ public class RentalService {
     @Transactional
     public Long rental(Long userId, Long bookId) {
 
-        User user = userRepository.findOne(userId);
+        Optional<User> user = userRepository.findOne(userId);
 
-        Book book = bookRepository.findOne(bookId);
-        book.removeStock(1);
+        Optional<Book> book = bookRepository.findOne(bookId);
+        book.get().removeStock(1);
         
         Rental rental = new Rental();
-        rental.createRental(user, book);
+        rental.createRental(user.get(), book.get());
 
         rentalRepository.save(rental);
 

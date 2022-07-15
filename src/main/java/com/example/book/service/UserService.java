@@ -1,6 +1,7 @@
 package com.example.book.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,9 +49,9 @@ public class UserService {
     //회원탈퇴
     @Transactional
     public void delete(Long userId) {
-        User user = userRepository.findOne(userId);
-        user.setUseAt("N");
-        userRepository.save(user);
+        Optional<User> user = userRepository.findOne(userId);
+        user.get().setUseAt("N");
+        userRepository.save(user.get());
     }
 
 }

@@ -26,14 +26,14 @@ public class User {
 
     private String address; //사용자 주소
 
-    private Integer registNum; //주민등록번호
+    private String registNum; //주민등록번호
 
     private LocalDateTime joinDate; //가입일자
     
     private String useAt; //회원탈퇴 여부
 
     /** 생성메서드 */
-    public User createUser(String userNm, String phoneNum, String address, Integer registNum) {
+    public static User createUser(String userNm, String phoneNum, String address, String registNum) {
         
         User user = new User();
         user.setUserNm(userNm);

@@ -16,7 +16,11 @@ public class RentalDto {
     private User user;
     private Book book;
 
-    public RentalDto(Rental o) {
+    public RentalDto(Rental rental) {
+        this.rentalStartDate = rental.getRentalStartDate();
+        this.rentalEndDate = rental.getRentalEndDate();
+        this.user = rental.getUser();
+        this.book = rental.getBook();
     }
     
 }
