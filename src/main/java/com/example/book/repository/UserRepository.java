@@ -36,13 +36,8 @@ public class UserRepository {
             .getResultList();
     }
 
-    public Optional<User> findOne(Long userId){
-        return em.createQuery(
-            "select u from User u where id = :userId", User.class)
-            .setParameter("userId", userId)
-            .getResultList()
-            .stream()
-            .findAny();
+    public User findOne(Long userId){
+        return em.find(User.class, userId);
     }
 
 }

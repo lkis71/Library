@@ -20,13 +20,7 @@ public class BookRepository {
         em.persist(book);
     }
 
-    public Optional<Book> findOne(Long bookId) {
-        return em.createQuery("select b from Book b where id = :bookId", Book.class)
-            .setParameter("bookId", bookId)
-            .getResultList()
-            .stream()
-            .findAny();
+    public Book findOne(Long bookId) {
+        return em.find(Book.class, bookId);
     }
-
-    
 }

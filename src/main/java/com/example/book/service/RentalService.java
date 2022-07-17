@@ -28,13 +28,12 @@ public class RentalService {
     @Transactional
     public Long rental(Long userId, Long bookId) {
 
-        Optional<User> user = userRepository.findOne(userId);
+        User user = userRepository.findOne(userId);
 
-        Optional<Book> book = bookRepository.findOne(bookId);
-        book.get().removeStock(1);
+        Book book = bookRepository.findOne(bookId);
+        book.removeStock(1);
         
-        Rental rental = new Rental();
-        rental.createRental(user.get(), book.get());
+        Rental rental = Rental.createRental(user, book);
 
         rentalRepository.save(rental);
 
