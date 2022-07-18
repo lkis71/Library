@@ -7,6 +7,6 @@ public class UserRequest {
     
     private String userNm;
     private String phoneNum;
-    private String address;
+    private String address; 
     private String registNum;
 }

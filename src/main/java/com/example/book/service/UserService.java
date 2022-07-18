@@ -49,9 +49,9 @@ public class UserService {
     //회원탈퇴
     @Transactional
     public void delete(Long userId) {
-        Optional<User> user = userRepository.findOne(userId);
-        user.get().setUseAt("N");
-        userRepository.save(user.get());
+        User user = userRepository.findOne(userId);
+        user.setUseAt("N");
+        userRepository.save(user);
     }
 
 }
