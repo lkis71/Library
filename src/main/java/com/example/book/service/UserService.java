@@ -1,7 +1,6 @@
 package com.example.book.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +16,11 @@ import lombok.RequiredArgsConstructor;
 public class UserService {
     
     private final UserRepository userRepository;
+
+    //회원 조회
+    public User findOne(Long userId) {
+        return userRepository.findOne(userId);
+    }
     
     //회원 전체조회
     public List<User> findAll() {

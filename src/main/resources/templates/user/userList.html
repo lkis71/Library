@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- <head th:replace="fragments/header :: header" /> -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<body>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>이름</th>
+                    <th>휴대폰번호</th>
+                    <th>주소</th>
+                    <th>주민등록번호</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.userNm}"></td>
+                    <td th:text="${user.phoneNum}"></td>
+                    <td th:text="${user.address}"></td>
+                    <td th:text="${user.registNum}"></td>
+                    <td><a href="#" th:href="'javascript:udpateUser('+${user.id}+')'" >수정</a></td>
+                </tr>
+            </tbody>
+        </table>
+	</div>
+</body>
+</html>
+
+<script>
+function udpateUser(id){
+    var form = document.createElement("form");
+    form.setAttribute("methos", "post");
+    form.setAttribute("action", "/user/"+id+"/edit");
+    document.body.appendChild(form);
+    form.submit();
+}
+</script>

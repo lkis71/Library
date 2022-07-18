@@ -1,7 +1,6 @@
 package com.example.book.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.persistence.EntityManager;
 

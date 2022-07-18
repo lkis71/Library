@@ -21,11 +21,11 @@ public class User {
     @Column(name = "user_id")
     private Long id;
 
-    private String userNm; //사용자 이름
+    private String userNm; //이름
 
-    private String phoneNum; //사용자 번호
+    private String phoneNum; //휴대폰 번호
 
-    private String address; //사용자 주소
+    private String address; //주소
 
     private String registNum; //주민등록번호
 

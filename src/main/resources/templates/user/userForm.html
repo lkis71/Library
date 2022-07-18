@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- <head th:replace="fragments/header :: header" /> -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<body>
+	<div>
+        <form role="form" action="${user.id==null ? '/user/new':'/user/{user.id}/new'}" method="post">
+            <table>
+                <tr>
+                    <th scope="row" align="left">이름</th>
+                    <td><input type="text" name="userNm" th:value="${user.userNm}" /></td>
+                </tr>
+                <tr>
+                    <th scope="row" align="left">휴대폰번호</th>
+                    <td><input type="text" name="phoneNum" th:value="${user.phoneNum}" /></td>
+                </tr>
+                <tr>
+                    <th scope="row" align="left">주소</th>
+                    <td><input type="text" name="address" th:value="${user.address}" /></td>
+                </tr>
+                <tr>
+                    <th scope="row" align="left">주민등록번호</th>
+                    <td><input type="text" name="registNum" th:value="${user.registNum}" /></td>
+                </tr>
+            </table>
+            <button type="submit">등록/수정</button>
+        </form>
+	</div>
+</body>
+</html>
