@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- <head th:replace="fragments/header :: header" /> -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<body>
+	<div>
+        <th:block th:if="${book.id == null}">
+            <form role="form" action="/books/new" method="post">
+            </th:block>
+        <th:block th:if="${book.id != null}">
+            <form role="form" th:action="@{/books/} + ${book.id} + @{/edit}" method="post">
+        </th:block>
+        
+            <table>
+                <tr>
+                    <th scope="row" align="left">제목</th>
+                    <td><input type="text" name="title" th:value="${book.title}" /></td>
+                </tr>
+                <tr>
+                    <th scope="row" align="left">수량</th>
+                    <td><input type="text" name="stock" th:value="${book.stock}" /></td>
+                </tr>
+                <tr>
+                    <th scope="row" align="left">저자명</th>
+                    <td><input type="text" name="author" th:value="${book.author}" /></td>
+                </tr>
+                <tr>
+                    <th scope="row" align="left">위치</th>
+                    <td><input type="text" name="location" th:value="${book.location}" /></td>
+                </tr>
+            </table>
+            <button type="submit">등록/수정</button>
+        </form>
+	</div>
+</body>
+</html>

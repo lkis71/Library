@@ -24,5 +24,10 @@ public class BookService {
         
         return book;
     }
+
+    @Transactional
+    public Book findOne(Long bookId) {
+        return bookRepository.findOne(bookId);
+    }
     
 }

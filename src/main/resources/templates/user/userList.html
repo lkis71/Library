@@ -24,6 +24,7 @@
                 </tr>
             </tbody>
         </table>
+        <button onclick="location.href='/users/new'">등록</button>
 	</div>
 </body>
 </html>
@@ -32,7 +33,7 @@
 function udpateUser(id){
     var form = document.createElement("form");
     form.setAttribute("methos", "post");
-    form.setAttribute("action", "/user/"+id+"/edit");
+    form.setAttribute("action", "/users/"+id+"/edit");
     document.body.appendChild(form);
     form.submit();
 }

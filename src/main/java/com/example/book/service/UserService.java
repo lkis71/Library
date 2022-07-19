@@ -47,7 +47,11 @@ public class UserService {
     //회원수정
     @Transactional
     public void update(User user) {
-        userRepository.save(user);
+        User findUser = userRepository.findOne(user.getId());
+        findUser.setUserNm(user.getUserNm());
+        findUser.setPhoneNum(user.getPhoneNum());
+        findUser.setAddress(user.getAddress());
+        findUser.setRegistNum(user.getRegistNum());
     }
 
     //회원탈퇴

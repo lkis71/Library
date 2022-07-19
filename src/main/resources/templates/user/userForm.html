@@ -4,7 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <body>
 	<div>
-        <form role="form" action="${user.id==null ? '/user/new':'/user/{user.id}/new'}" method="post">
+        <th:block th:if="${user.id == null}">
+            <form role="form" action="/users/new" method="post">
+            </th:block>
+        <th:block th:if="${user.id != null}">
+            <form role="form" th:action="@{/users/} + ${user.id} + @{/edit}" method="post">
+        </th:block>
+        
             <table>
                 <tr>
                     <th scope="row" align="left">이름</th>
