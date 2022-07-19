@@ -63,10 +63,7 @@ public class UserController {
     @PostMapping("/users/{userId}/edit")
     public String updateUser(@PathVariable("userId") Long userId, UserRequest userRequest) {
 
-        User user = User.createUser(userRequest.getUserNm(), userRequest.getPhoneNum(), userRequest.getAddress(), userRequest.getRegistNum());
-        user.setId(userId);
-
-        userService.update(user);
+        userService.update(userId, userRequest);
 
         return "redirect:/users";
     }

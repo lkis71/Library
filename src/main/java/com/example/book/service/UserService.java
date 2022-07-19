@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.book.controller.request.UserRequest;
 import com.example.book.entity.User;
 import com.example.book.repository.UserRepository;
 
@@ -46,12 +47,12 @@ public class UserService {
 
     //회원수정
     @Transactional
-    public void update(User user) {
-        User findUser = userRepository.findOne(user.getId());
-        findUser.setUserNm(user.getUserNm());
-        findUser.setPhoneNum(user.getPhoneNum());
-        findUser.setAddress(user.getAddress());
-        findUser.setRegistNum(user.getRegistNum());
+    public void update(Long userId, UserRequest userRequest) {
+        User user = userRepository.findOne(userId);
+        user.setUserNm(userRequest.getUserNm());
+        user.setPhoneNum(userRequest.getPhoneNum());
+        user.setAddress(userRequest.getAddress());
+        user.setRegistNum(userRequest.getRegistNum());
     }
 
     //회원탈퇴

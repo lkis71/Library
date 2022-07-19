@@ -29,7 +29,12 @@
                     <td><input type="text" name="location" th:value="${book.location}" /></td>
                 </tr>
             </table>
-            <button type="submit">등록/수정</button>
+            <th:block th:if="${book.id == null}">
+                <button type="submit">등록</button>
+            </th:block>
+            <th:block th:if="${book.id != null}">
+                <button type="submit">수정</button>
+            </th:block>
         </form>
 	</div>
 </body>

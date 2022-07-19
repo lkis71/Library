@@ -1,5 +1,7 @@
 package com.example.book.repository;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import org.springframework.stereotype.Repository;
@@ -20,5 +22,10 @@ public class BookRepository {
 
     public Book findOne(Long bookId) {
         return em.find(Book.class, bookId);
+    }
+
+    public List<Book> findAll() {
+        return em.createQuery("select b from Book b", Book.class)
+            .getResultList();
     }
 }

@@ -1,5 +1,7 @@
 package com.example.book.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,6 +30,20 @@ public class BookService {
     @Transactional
     public Book findOne(Long bookId) {
         return bookRepository.findOne(bookId);
+    }
+    
+    @Transactional
+    public List<Book> findAll() {
+        return bookRepository.findAll();
+    }
+
+    @Transactional
+    public void update(Long bookId, BookRequest bookRequest) {
+        Book book = bookRepository.findOne(bookId);
+        book.setTitle(bookRequest.getTitle());
+        book.setStock(bookRequest.getStock());
+        book.setAuthor(bookRequest.getAuthor());
+        book.setLocation(bookRequest.getLocation());
     }
     
 }
