@@ -1,14 +1,11 @@
 package com.example.book.entity;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -30,14 +27,6 @@ public class Book {
     private String location; //책 위치
 
     private LocalDateTime newDate; //책 반입 일자
-
-    @OneToMany(mappedBy = "book")
-    private List<Rental> rental = new ArrayList<>();
-
-    public void setRental(Rental rental){
-        this.rental.add(rental);
-        rental.setBook(this);
-    }
 
     /** 생성메서드 */
     public static Book createBook(String title, int stock, String author, String location) {
